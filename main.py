@@ -7,10 +7,10 @@ import pandas as pd
 def create_connection():
     try:
         connection = mysql.connector.connect(
-            host='localhost',
-            user='root',
-            password='Ch@r@n2003',
-            database='charandb'
+            host="bmgiwu7opiyq7grqp43g-mysql.services.clever-cloud.com",
+            user="u9vthbpksygk4fsf",
+            password="1xt1TYlaGbyzDkVGDoa4",
+            database="bmgiwu7opiyq7grqp43g"
         )
         if connection.is_connected():
             return connection
