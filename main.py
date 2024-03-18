@@ -60,13 +60,24 @@ def additem_page(connection):
     
 
 def view_page(connection):
-    st.title(":violet[Items List]")
+    st.header(":violet[Items List by search]")
+    name = st.text_input("Enter the name of the item to show details!")
     cursor = connection.cursor()
+    query = "SELECT * FROM pricelist WHERE name LIKE %s"
+    cursor.execute(query, ('%' + name + '%',))
+    items_data = cursor.fetchall()
+    if items_data:
+            df = pd.DataFrame(items_data, columns=["ID", "Item Name", "Buy Price", "Selling Price", "Location"])
+            st.table(df)
+    else:
+            st.write("No items found.")
+    #To display all existing items
+    st.title(":violet[Full List]")
     cursor.execute("SELECT * FROM pricelist ORDER BY name")
     items_data = cursor.fetchall()
     connection.close()
     if items_data:
-            df = pd.DataFrame(items_data, columns=["ID", "Item Name", "Buy Price", "Selling Price", "Location"])
+            df = pd.DataFrame(items_data, columns=["ID", "Item Name", "Buy Price", "Selling Price", "Description"])
             st.table(df)
     else:
             st.write("No items found.")
