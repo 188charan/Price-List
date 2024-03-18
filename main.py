@@ -67,7 +67,7 @@ def view_page(connection):
     cursor.execute(query, ('%' + name + '%',))
     items_data = cursor.fetchall()
     if items_data:
-            df = pd.DataFrame(items_data, columns=["ID", "Item Name", "Buy Price", "Selling Price", "Location"])
+            df = pd.DataFrame(items_data, columns=["ID", "Item Name", "Buy Price", "Selling Price", "Description"])
             st.table(df)
     else:
             st.write("No items found.")
