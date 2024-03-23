@@ -93,7 +93,7 @@ def main():
         create_pricelist_table(connection)
 
     st.sidebar.title(':rainbow[Pavan Cycle stores]')
-    pages = ["Add Item","View list"]
+    pages = ["View list","Add Items"]
     selection = st.sidebar.radio("Go to", pages)
     if selection == "Add Item":
         additem_page(connection)
